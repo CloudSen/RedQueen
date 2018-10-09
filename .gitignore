@@ -165,11 +165,4 @@ venv.bak/
 
 # mypy
 .mypy_cache/
-
-.gitignore
 .idea/
-RedQueen/
-cloudsen_blog/
-manage.py
-static/
-templates/
