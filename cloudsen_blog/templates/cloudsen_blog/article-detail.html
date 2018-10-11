@@ -1,21 +1,21 @@
 {% extends 'cloudsen_blog/base.html' %}
 {% load staticfiles %}
+{% load markdown_deux_tags %}
 
 {% block title %}
     {{ article.title }}
 {% endblock %}
 
 {% block body %}
-    <div class="card text-center">
+    <div class="card text-left">
         <div class="card-header">
-            {{ article.author }}
+            {{ article.title }}
         </div>
         <div class="card-body">
-            <h5 class="card-title">{{ article.title }}</h5>
-            <p class="card-text">{{ article.content }}</p>
+            <p class="card-text">{{ article.content|markdown }}</p>
         </div>
         <div class="card-footer text-muted">
-            {{ article.update_time }}
+            {{ article.update_time|date:'Y-m-d H:i:s' }}
         </div>
     </div>
 {% endblock %}

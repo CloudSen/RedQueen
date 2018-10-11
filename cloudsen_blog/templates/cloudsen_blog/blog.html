@@ -1,5 +1,6 @@
 {% extends 'cloudsen_blog/base.html' %}
 {% load staticfiles %}
+{% load markdown_deux_tags %}
 
 {% block title %}
     Blog
@@ -15,7 +16,7 @@
                             <h5 class="card-title">{{ article.title }}</h5>
                             <h6 class="card-subtitle mb-2 text-muted">{{ article.author }}</h6>
                             <p class="card-text">
-                                {{ article.content|safe|truncatechars_html:200 }}
+                                {{ article.summary|safe|truncatechars_html:200|markdown }}
                             </p>
                             <a href="{% url 'go_article_detail' article.pk %}" class="card-link text-white">阅读更多</a>
                         </div>
