@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'cloudsen_blog',
+    'markdown_deux',
 ]
 
 MIDDLEWARE = [
