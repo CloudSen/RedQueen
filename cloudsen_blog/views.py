@@ -17,9 +17,14 @@ def go_blog_page(request: HttpRequest):
 
 def go_article_detail_page(request: HttpRequest, article_pk: int):
     """redirect to article's detail page"""
-    article = models.Article.objects.get(pk=article_pk)
+    article = get_article_detail(article_pk)
     context = {'article': article}
     return render(request, 'cloudsen_blog/article-detail.html', context)
+
+
+def go_tag_page(request: HttpRequest):
+    """redirect to article tag page"""
+    pass
 
 
 def go_same_tag_articles_page(request: HttpRequest, tag_name: str):
@@ -34,7 +39,7 @@ def list_all_articles():
 
 def get_article_detail(article_pk: int):
     """retuen an article's detail, searching by primary key"""
-    pass
+    return models.Article.objects.get(pk=article_pk)
 
 
 def list_same_tag_articles(tag_name: str):
