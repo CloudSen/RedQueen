@@ -1,0 +1,31 @@
+{% extends 'cloudsen_blog/base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    Blog
+{% endblock %}
+
+{% block body %}
+    {% for article in articles %}
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="text-center">
+                    <div class="card text-white bg-info mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ article.title }}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{ article.author }}</h6>
+                            <p class="card-text">
+                                {{ article.content|safe|truncatechars_html:200 }}
+                            </p>
+                            <a href="{% url 'go_article_detail' article.pk %}" class="card-link text-white">阅读更多</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
+
+{% block extension_of_script %}
+{#    <script src="{% static 'cloudsen_blog/js/YourJS' %}"></script>#}
+{% endblock %}

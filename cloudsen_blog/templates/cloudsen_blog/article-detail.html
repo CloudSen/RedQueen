@@ -1,0 +1,25 @@
+{% extends 'cloudsen_blog/base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    {{ article.title }}
+{% endblock %}
+
+{% block body %}
+    <div class="card text-center">
+        <div class="card-header">
+            {{ article.author }}
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{ article.title }}</h5>
+            <p class="card-text">{{ article.content }}</p>
+        </div>
+        <div class="card-footer text-muted">
+            {{ article.update_time }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block extension_of_script %}
+    {#    <script src="{% static 'cloudsen_blog/js/YourJS' %}"></script>#}
+{% endblock %}
