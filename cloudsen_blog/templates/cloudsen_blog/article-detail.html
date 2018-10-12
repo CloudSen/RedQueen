@@ -7,16 +7,18 @@
 {% endblock %}
 
 {% block body %}
-    <div class="card text-left">
-        <div class="card-header">
-            {{ article.title }}
-        </div>
-        <div class="card-body">
-            <p class="card-text">{{ article.content|markdown }}</p>
-        </div>
-        <div class="card-footer text-muted">
-            编辑与：{{ article.update_time|date:'Y-m-d H:i:s' }}
-        </div>
+    <div class="container">
+        <article class="card text-left bg-dark text-light" role="article">
+            <div class="card-header">
+                {{ article.title }}
+            </div>
+            <div class="card-body">
+                <p class="card-text">{{ article.content|markdown }}</p>
+            </div>
+            <div class="card-footer text-muted bg-dark text-light">
+                {{ article.author }} 编辑与：{{ article.update_time|date:'Y-m-d H:i:s' }}
+            </div>
+        </article>
     </div>
 {% endblock %}
 
