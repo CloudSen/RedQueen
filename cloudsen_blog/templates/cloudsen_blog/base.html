@@ -4,18 +4,44 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="{% static '/redqueen/css/bootstrap4.0.0/bootstrap.min.css' %}">
+    <link rel="stylesheet"
+          href="{% static '/redqueen/css/bootstrap-material-design/bootstrap-material-design.min.css' %}">
+    <link rel="stylesheet"
+          href="{% static '/redqueen/css/bootstrap-material-design/bootstrap-material-fonts-icons.css' %}">
+    <link rel="stylesheet" href="{% static '/cloudsen_blog/css/base.css' %}">
     {% block extension-of-header %}{% endblock %}
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-<div class="container-fluid">
+<header class="container-fluid">
     {% include  'cloudsen_blog/header.html' %}
+</header>
+<main class="container-fluid" role="main">
+    <div class="row" style="height: 56px;">
+        <div class="col-sm-12"></div>
+    </div>
+    <div class="row">
+{#        <div class="col-sm-12">#}
+{#            {% include 'cloudsen_blog/header-banner-carousel.html' %}#}
+{#        </div>#}
+    </div>
+    <div class="row" style="height: 20px;">
+        <div class="col-sm-12">
+        </div>
+    </div>
     {% block body %}{% endblock %}
+    <div class="row" style="height: 20px;">
+        <div class="col-sm-12">
+        </div>
+    </div>
+</main>
+<footer class="container-fluid footer text-center bg-dark text-light">
     {% include  'cloudsen_blog/footer.html' %}
-</div>
+</footer>
 <script src="{% static '/redqueen/js/jquery3.2.1/jquery.slim.min.js' %}"></script>
-<script src="{% static '/redqueen/js/bootstrap4.0.0/bootstrap.min.js' %}"></script>
+<script src="{% static '/redqueen/js/popper.js' %}"></script>
+<script src="{% static '/redqueen/js/bootstrap-material-design/bootstrap-material-design.min.js' %}"></script>
+<script src="{% static 'cloudsen_blog/js/base.js' %}"></script>
 {% block extension_of_script %}{% endblock %}
 </body>
 </html>
