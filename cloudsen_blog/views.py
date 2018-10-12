@@ -11,7 +11,8 @@ def go_home_page(request: HttpRequest):
 def go_blog_page(request: HttpRequest):
     """redirect to blog page"""
     articles = list_all_articles()
-    context = {'articles': articles}
+    tags = list_all_tags()
+    context = {'articles': articles, 'tags': tags}
     return render(request, 'cloudsen_blog/blog.html', context)
 
 
@@ -45,3 +46,7 @@ def get_article_detail(article_pk: int):
 def list_same_tag_articles(tag_name: str):
     """return a list of articles with same tag"""
     pass
+
+
+def list_all_tags():
+    return models.Tag.objects.all()
