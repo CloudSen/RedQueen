@@ -10,8 +10,8 @@
     <div class="container">
         {#  Article Tags Card  #}
         <div class="row">
-            <aside class="col-sm-4">
-                <div class="card text-white bg-dark mb-3 p-3">
+            <aside class="col-sm-3">
+                <div class="card text-white bg-dark mb-3 p-3" style="width: 100%;">
                     <div class="card-header">标签</div>
                     <div class="card-body">
                         {% for tag in tags %}
@@ -21,31 +21,41 @@
                 </div>
             </aside>
             {#  Articles Card  #}
-            <div class="col-sm-8">
-                {% for article in articles %}
-                    <div class="card text-white bg-dark mb-3">
-                        <img class="card-img-top card-img"
-                             src="{% static 'cloudsen_blog/imgs/python-tutorial-translation.png' %}"
-                             alt="Card image cap">
-                        <div class="card-body">
-                            <a href="{% url 'go_article_detail' article.pk %}" class="card-link text-white">
-                                <h5 class="card-title">{{ article.title }}</h5>
-                            </a>
-                            <p class="card-text">
-                                {{ article.summary|safe|truncatechars_html:200|markdown }}
-                            </p>
-                            <p class="card-text">
-                                <small class="text-muted">Last
-                                    updated: {{ article.update_time|date:'Y-m-d H-i-s' }}</small>
-                            </p>
-                        </div>
+            <div class="col-sm-9">
+                <div class="container">
+                    <div class="row">
+                        {% for article in articles %}
+                            <div class="col-sm-5">
+                                <div class="card text-white bg-dark mb-3" style="width: 100%;">
+                                    <img class="card-img-top"
+                                         src="{% static 'cloudsen_blog/imgs/python-tutorial-translation.png' %}"
+                                         alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text">
+                                            {{ article.summary|safe|truncatechars_html:200|markdown }}
+                                        </p>
+                                        <a href="{% url 'go_article_detail' article.pk %}" class="btn btn-info">Go
+                                            somewhere</a>
+                                        <p class="card-text">
+                                            <small class="text-muted">Last
+                                                updated: {{ article.update_time|date:'Y-m-d H:i:s' }}</small>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
                     </div>
-                {% endfor %}
+                </div>
             </div>
         </div>
     </div>
 {% endblock %}
 
+{% block extension-of-header %}
+    <link rel="stylesheet" href="{% static 'cloudsen_blog/css/blog.css' %}"/>
+{% endblock %}
+
 {% block extension_of_script %}
-    {#    <script src="{% static 'cloudsen_blog/js/YourJS' %}"></script>#}
+    <script src="{% static 'cloudsen_blog/js/blog.js' %}"></script>
 {% endblock %}
