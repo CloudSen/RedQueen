@@ -1,7 +1,6 @@
 body {
-    background: url("../imgs/wallpaper-dark.jpg") repeat;
+    background: url("../imgs/wallpaper-dark.jpg") repeat #000;
     background-size: cover;
-    background-color: #000;
 }
 
 #hello-world {
