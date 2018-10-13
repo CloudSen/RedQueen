@@ -6,8 +6,6 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
-    background: url("../imgs/wallpaper-dark.jpg") repeat;
-    background-size: cover;
 }
 
 main {

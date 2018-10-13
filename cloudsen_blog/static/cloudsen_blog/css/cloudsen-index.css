@@ -1,3 +1,9 @@
+body {
+    background: url("../imgs/wallpaper-dark.jpg") repeat;
+    background-size: cover;
+    background-color: #000;
+}
+
 #hello-world {
     position: absolute;
     left: 50%;
