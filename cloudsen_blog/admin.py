@@ -1,7 +1,9 @@
 from django.contrib import admin
-from .models import Article, Tag
+from django.db import models
+from .models import Article, Tag, MyIdea
 from django.urls import reverse
 from django.utils.html import format_html
+from markdownx.widgets import AdminMarkdownxWidget
 
 
 @admin.register(Article)
@@ -49,3 +51,24 @@ class TagAdmin(admin.ModelAdmin):
         'name'
     ]
     ordering = ('id',)
+
+
+@admin.register(MyIdea)
+class MyIdeaAdmin(admin.ModelAdmin):
+    list_display = [
+        'id',
+        'author',
+        'content',
+        'create_time',
+        'update_time',
+        'is_deleted',
+    ]
+    list_display_links = [
+        'id',
+        'content',
+    ]
+    formfield_overrides = {
+        models.TextField: {
+            'widget': AdminMarkdownxWidget,
+        }
+    }
