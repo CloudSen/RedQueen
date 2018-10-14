@@ -13,31 +13,29 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-<header class="container-fluid">
-    {% include  'cloudsen_blog/header.html' %}
-</header>
+{# Drawer Header #}
+{% include  'cloudsen_blog/common-templates/header.html' %}
+
+{# Main Content #}
 <main class="container-fluid" role="main">
     <div class="row" style="height: 56px;">
-        <div class="col-sm-12"></div>
-    </div>
-    <div class="row">
-{#        <div class="col-sm-12">#}
-{#            {% include 'cloudsen_blog/header-banner-carousel.html' %}#}
-{#        </div>#}
+        <div class="col-sm-12 col-md-12 col-lg-12"></div>
     </div>
     <div class="row" style="height: 20px;">
-        <div class="col-sm-12">
+        <div class="col-sm-12 col-md-12 col-lg-12">
         </div>
     </div>
     {% block body %}{% endblock %}
     <div class="row" style="height: 20px;">
-        <div class="col-sm-12">
+        <div class="col-sm-12 col-md-12 col-lg-12">
         </div>
     </div>
 </main>
-<footer class="container-fluid footer text-center bg-dark text-light">
-    {% include  'cloudsen_blog/footer.html' %}
-</footer>
+
+{# U know just footer #}
+{% include  'cloudsen_blog/common-templates/footer.html' %}
+
+{# JavaScript U need #}
 <script src="{% static '/redqueen/js/jquery3.2.1/jquery.slim.min.js' %}"></script>
 <script src="{% static '/redqueen/js/popper.js' %}"></script>
 <script src="{% static '/redqueen/js/bootstrap-material-design/bootstrap-material-design.min.js' %}"></script>
