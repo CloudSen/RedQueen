@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'cloudsen_blog',
-    'markdown_deux',
+    'markdownx',
 ]
 
 MIDDLEWARE = [
@@ -121,6 +121,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# 项目在服务器上部署时，将所有静态文件打包到这个地址
+STATIC_ROOT = os.path.join(BASE_DIR, 'collected_statics')
+
+# 指定额外的静态文件存储位置
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
