@@ -5,22 +5,23 @@ import cloudsen_blog.models as models
 
 def go_home_page(request: HttpRequest):
     """redirect to home page"""
-    return render(request, 'cloudsen_blog/cloudsen-index.html')
+    return render(request, 'cloudsen_blog/home/cloudsen-index.html')
 
 
 def go_blog_page(request: HttpRequest):
     """redirect to blog page"""
     articles = list_all_articles()
     tags = list_all_tags()
-    context = {'articles': articles, 'tags': tags}
-    return render(request, 'cloudsen_blog/blog.html', context)
+    my_ideas = list_all_my_idea()
+    context = {'articles': articles, 'tags': tags, 'ideas': my_ideas}
+    return render(request, 'cloudsen_blog/blog/blog.html', context)
 
 
 def go_article_detail_page(request: HttpRequest, article_pk: int):
     """redirect to article's detail page"""
     article = get_article_detail(article_pk)
     context = {'article': article}
-    return render(request, 'cloudsen_blog/article-detail.html', context)
+    return render(request, 'cloudsen_blog/blog/article-detail.html', context)
 
 
 def go_tag_page(request: HttpRequest):
@@ -50,3 +51,7 @@ def list_same_tag_articles(tag_name: str):
 
 def list_all_tags():
     return models.Tag.objects.all()
+
+
+def list_all_my_idea():
+    return models.MyIdea.objects.all()
