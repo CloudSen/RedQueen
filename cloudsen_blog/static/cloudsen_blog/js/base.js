@@ -1,3 +1,3 @@
 $(document).ready(function () {
-    $('body').bootstrapMaterialDesign();
-});
+    $('body').bootstrapMaterialDesign()
+})
