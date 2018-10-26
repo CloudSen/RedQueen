@@ -128,3 +128,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'collected_statics')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+
+# MarkDownX Settings
+MARKDOWNX_MARKDOWN_EXTENSIONS = [
+    'markdown.extensions.tables',
+    'markdown.extensions.footnotes',
+    'markdown.extensions.abbr',
+]
