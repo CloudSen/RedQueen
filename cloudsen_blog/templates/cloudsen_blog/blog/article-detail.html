@@ -9,9 +9,13 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12">
-                <nav class="navbar navbar-dark bg-dark mb-3">
-                    <a class="navbar-brand" href="#">返回</a>
-                </nav>
+                <div class="card bg-dark mb-3 " style="height: 56px;">
+                    <div class="card-body">
+                        <p class="card-title">
+                            <a class="text-light" href="javascript:history.back(-1)">返回</a>
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -20,7 +24,7 @@
                     <div class="card-header">
                         {{ article.title }}
                     </div>
-                    <div class="card-body">
+                    <div class="card-body markdown-body text-light">
                         <p class="card-text">{{ article.formatted_content|safe }}</p>
                     </div>
                     <div class="card-footer text-muted bg-dark text-light">

@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpRequest
+from django.core.paginator import Paginator
+from django.utils import timezone
 import cloudsen_blog.models as models
 
 
@@ -10,10 +12,11 @@ def go_home_page(request: HttpRequest):
 
 def go_blog_page(request: HttpRequest):
     """redirect to blog page"""
-    articles = list_all_articles()
+    page_num = request.GET.get('page_num', 1)
+    page = list_latest_2_month_articles(page_num)
     tags = list_all_tags()
     my_ideas = list_all_my_idea()
-    context = {'articles': articles, 'tags': tags, 'ideas': my_ideas}
+    context = {'latest_articles_page': page, 'tags': tags, 'ideas': my_ideas}
     return render(request, 'cloudsen_blog/blog/blog.html', context)
 
 
@@ -37,6 +40,14 @@ def go_same_tag_articles_page(request: HttpRequest, tag_name: str):
 def list_all_articles():
     """get a list of all my articles"""
     return models.Article.objects.all()
+
+
+def list_latest_2_month_articles(page_number: int = 1):
+    latest_2_month_date = timezone.now() - timezone.timedelta(days=60)
+    latest_articles = models.Article.objects.filter(update_time__gte=latest_2_month_date).order_by('update_time')
+    paginator = Paginator(latest_articles, 2)
+    page = paginator.get_page(page_number)
+    return page
 
 
 def get_article_detail(article_pk: int):
