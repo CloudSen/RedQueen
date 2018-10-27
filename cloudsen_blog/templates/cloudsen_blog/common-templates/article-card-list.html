@@ -1,0 +1,73 @@
+{# description: Display all kinds of article cards #}
+{# card_type_id: 1=>image overlays card,  2=>only image card, 3=>image caps card, 4=>only text card #}
+{# create_by: CloudSen #}
+{# update_time: 10/27/18 #}
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card-columns">
+            {% for article in page.object_list %}
+                <div class="card bg-dark mb-3 {{ article.text_color }}" style="width: 100%;">
+                    {% if article.card_type.pk == 1 %}
+                        {# image overlays card #}
+                        <img class="card-img card-img-full-width" src="{{ article.preview_pic_url }}" alt="image background">
+                        <div class="card-img-overlay {{ article.text_color }}">
+                            <h5 class="card-title">{{ article.title }}</h5>
+                            <p class="card-text">
+                                {{ article.formatted_summary|safe|truncatechars_html:200 }}
+                            </p>
+                            <p class="card-text">
+                                <small>
+                                    <i class="material-icons icon-size-small">&#xE192;</i>
+                                    {{ article.update_time|date:'Y-m-d' }}
+                                    <i class="material-icons icon-size-small">&#xE54E;</i>
+                                    <a href="#" class="badge badge-info">{{ article.tag.name }}</a>
+                                </small>
+                            </p>
+                        </div>
+                    {% elif article.card_type.pk == 2 %}
+                        {# only image card #}
+                        <img class="card-img card-img-full-width" src="{{ article.preview_pic_url }}" alt="image">
+                    {% elif article.card_type.pk == 3 %}
+                        {# image caps card #}
+                        <img class="card-img-top card-img-full-width" src="{{ article.preview_pic_url }}" alt="Preview image">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ article.title }}</h5>
+                            <p class="card-text">
+                                {{ article.formatted_summary|safe|truncatechars_html:200 }}
+                            </p>
+                            <p class="card-text">
+                                <small class="text-muted">
+                                    <i class="material-icons icon-size-small">&#xE192;</i>
+                                    {{ article.update_time|date:'Y-m-d' }}
+                                    <i class="material-icons icon-size-small">&#xE54E;</i>
+                                    <a href="#" class="badge badge-info">{{ article.tag.name }}</a>
+                                </small>
+                            </p>
+                        </div>
+                    {% elif article.card_type.pk == 4 %}
+                        {# only text card #}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ article.title }}</h5>
+                            <p class="card-text">
+                                {{ article.formatted_summary|safe|truncatechars_html:200 }}
+                            </p>
+                            <a href="{% url 'go_article_detail' article.pk %}" class="btn btn-info">
+                                查看更多
+                            </a>
+                            <p class="card-text">
+                                <small class="text-muted">
+                                    <i class="material-icons icon-size-small">&#xE192;</i>
+                                    {{ article.update_time|date:'Y-m-d' }}
+                                    <i class="material-icons icon-size-small">&#xE54E;</i>
+                                    <a href="#" class="badge badge-info">{{ article.tag.name }}</a>
+                                </small>
+                            </p>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

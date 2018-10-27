@@ -12,7 +12,7 @@
                 <div class="card bg-dark mb-3 " style="height: 56px;">
                     <div class="card-body">
                         <p class="card-title">
-                            <a class="text-light" href="javascript:history.back(-1)">返回</a>
+                            <a class="text-light" href="javascript:history.back(-1)"><i class="material-icons icon-size-small">&#xE408;</i>返回</a>
                         </p>
                     </div>
                 </div>
@@ -28,7 +28,9 @@
                         <p class="card-text">{{ article.formatted_content|safe }}</p>
                     </div>
                     <div class="card-footer text-muted bg-dark text-light">
-                        {{ article.author }} 编辑与：{{ article.update_time|date:'Y-m-d H:i:s' }}
+                        {{ article.author }}
+                        <small class="material-icons icon-size-small">&#xE855;</small>
+                        {{ article.update_time|date:'Y-m-d H:i:s' }}
                     </div>
                 </article>
             </div>
