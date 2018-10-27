@@ -21,18 +21,30 @@ footer {
     height: 180px;
 }
 
+.icon-size-small {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-size: 100%;
+    font-weight: 400;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 /* use this class where need to pased by markdown    start */
 .markdown-body {
-		box-sizing: border-box;
-		min-width: 200px;
-		max-width: 980px;
-		margin: 0 auto;
-		padding: 45px;
-	}
+    box-sizing: border-box;
+    min-width: 200px;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 45px;
+}
 
-	@media (max-width: 767px) {
-		.markdown-body {
-			padding: 15px;
-		}
-	}
+@media (max-width: 767px) {
+    .markdown-body {
+        padding: 15px;
+    }
+}
+
 /* use this class where need to pased by markdown    end */
