@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.db import models
-from .models import Article, Tag, MyIdea
+from .models import Article, Tag, MyIdea, CardType
 from django.urls import reverse
 from django.utils.html import format_html
 from markdownx.widgets import AdminMarkdownxWidget
@@ -27,12 +27,15 @@ class ArticleAdmin(admin.ModelAdmin):
         'id',
         'go_user_page',
         'go_tag_page',
+        'card_type',
+        'preview_pic_url',
         'create_time',
         'update_time',
         'is_deleted'
     ]
     list_display_links = [
-        'title'
+        'title',
+        'card_type',
     ]
     ordering = ('id',)
 
@@ -72,3 +75,20 @@ class MyIdeaAdmin(admin.ModelAdmin):
             'widget': AdminMarkdownxWidget,
         }
     }
+
+
+@admin.register(CardType)
+class CardTypeAdmin(admin.ModelAdmin):
+    list_display = [
+        'id',
+        'name',
+        'description',
+        'create_time',
+        'update_time',
+        'is_deleted',
+    ]
+    list_display_links = [
+        'id',
+        'name',
+        'description',
+    ]
