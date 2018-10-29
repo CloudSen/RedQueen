@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.http import HttpRequest
 from django.core.paginator import Paginator
 from django.utils import timezone
@@ -13,7 +13,7 @@ def go_home_page(request: HttpRequest):
 def go_blog_page(request: HttpRequest):
     """redirect to blog page"""
     page_num = request.GET.get('page_num', 1)
-    page, page_range = page_latest_2_month_articles(page_num)
+    page, page_range = paginate_latest_2_month_articles(page_num)
     context = {
         'page_range': page_range,
         'page': page,
@@ -25,7 +25,11 @@ def go_blog_page(request: HttpRequest):
 def go_article_detail_page(request: HttpRequest, article_pk: int):
     """redirect to article's detail page"""
     article = get_article_detail(article_pk)
-    context = {'article': article}
+    context = {
+        'article': article,
+        'previous_article': models.Article.objects.filter(create_time__lt=article.create_time).last(),
+        'next_article': models.Article.objects.filter(create_time__gt=article.create_time).first(),
+    }
     return render(request, 'cloudsen_blog/blog/article-detail.html', context)
 
 
@@ -34,9 +38,17 @@ def go_tag_page(request: HttpRequest):
     pass
 
 
-def go_same_tag_articles_page(request: HttpRequest, tag_name: str):
+def go_same_tag_articles_page(request: HttpRequest, tag_pk: int):
     """redirect to page that shows all articles with same tag"""
-    pass
+    tag = get_object_or_404(models.Tag, pk=tag_pk)
+    page_num = request.GET.get('page_num', 1)
+    page, page_range = paginate_same_tag_articles(tag_pk, page_num)
+    context = {
+        'page_range': page_range,
+        'page': page,
+        'tag': tag,
+    }
+    return render(request, 'cloudsen_blog/blog/same-tag-articles.html', context)
 
 
 def list_all_articles():
@@ -44,7 +56,7 @@ def list_all_articles():
     return models.Article.objects.all()
 
 
-def page_latest_2_month_articles(page_number: int = 1):
+def paginate_latest_2_month_articles(page_number: int = 1):
     """
     paginate the articles published within two month
 
@@ -58,12 +70,13 @@ def page_latest_2_month_articles(page_number: int = 1):
 
 def get_article_detail(article_pk: int):
     """retuen an article's detail, searching by primary key"""
-    return models.Article.objects.get(pk=article_pk)
+    return get_object_or_404(models.Article, pk=article_pk)
 
 
-def list_same_tag_articles(tag_name: str):
+def paginate_same_tag_articles(tag_pk: int, page_number: int = 1):
     """return a list of articles with same tag"""
-    pass
+    articles = get_list_or_404(models.Article, tag_id=tag_pk)
+    return paginate_data(articles, 10, page_number)
 
 
 def list_all_tags():

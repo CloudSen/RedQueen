@@ -11,6 +11,9 @@ class Tag(models.Model):
     update_time = models.DateTimeField(auto_now=True)
     is_deleted = models.BooleanField(default=False)
 
+    def get_articles_count_with_same_tag(self):
+        return self.article_set.count()
+
     def __str__(self):
         return self.name
 

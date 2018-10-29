@@ -10,5 +10,5 @@ urlpatterns = [
     # blog articles route
     path('blog/article/<int:article_pk>', views.go_article_detail_page, name='go_article_detail'),
     # blog tags page route
-    path('blog/tag/<str:tag_name>/articles/', views.go_same_tag_articles_page, name='go_same_tag_articles'),
+    path('blog/tag/<str:tag_pk>/articles/', views.go_same_tag_articles_page, name='go_same_tag_articles'),
 ]
