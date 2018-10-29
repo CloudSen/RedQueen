@@ -2,3 +2,13 @@ body {
     background: url("../imgs/wallpaper-blog.png") repeat #000;
     background-size: cover;
 }
+
+.a-light {
+    color: #fff;
+    text-decoration: none;
+}
+
+a.a-light:hover {
+    color: #6B747C;
+    text-decoration: none;
+}
