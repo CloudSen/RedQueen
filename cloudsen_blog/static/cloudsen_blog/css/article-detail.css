@@ -8,11 +8,6 @@ body {
     text-decoration: none;
 }
 
-a.a-light:hover {
-    color: #6B747C;
-    text-decoration: none;
-}
-
 /* 禁用默认菜单 */
 /** {*/
 /*-webkit-touch-callout: none; !*系统默认菜单被禁用*!*/
