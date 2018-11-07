@@ -33,3 +33,8 @@ body {
 .card-img-full-width {
     width: 100%;
 }
+
+a.a-img {
+    display: block;
+    font-size: 0;
+}
