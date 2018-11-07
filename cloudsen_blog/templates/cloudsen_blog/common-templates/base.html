@@ -14,6 +14,7 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
+<div id="particles-js"></div>
 {# Drawer Header #}
 {% include  'cloudsen_blog/common-templates/header.html' %}
 
@@ -33,13 +34,14 @@
     </div>
 </main>
 
-{# U know just footer #}
+{# footer #}
 {% include  'cloudsen_blog/common-templates/footer.html' %}
 
 {# JavaScript U need #}
-<script src="{% static '/redqueen/js/jquery3.2.1/jquery.slim.min.js' %}"></script>
-<script src="{% static '/redqueen/js/popper.js' %}"></script>
-<script src="{% static '/redqueen/js/bootstrap-material-design/bootstrap-material-design.min.js' %}"></script>
+<script src="{% static 'redqueen/js/jquery3.2.1/jquery.slim.min.js' %}"></script>
+<script src="{% static 'redqueen/js/popper.js' %}"></script>
+<script src="{% static 'redqueen/js/bootstrap-material-design/bootstrap-material-design.min.js' %}"></script>
+<script src="{% static 'redqueen/js/particles/particles.min.js' %}"></script>
 <script src="{% static 'cloudsen_blog/js/base.js' %}"></script>
 {% block extension_of_script %}{% endblock %}
 </body>

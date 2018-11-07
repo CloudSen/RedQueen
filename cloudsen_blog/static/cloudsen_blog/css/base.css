@@ -17,6 +17,15 @@ footer {
     flex: 0 0 auto;
 }
 
+#particles-js {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+}
+
 .card-img {
     width: auto;
     height: 180px;
