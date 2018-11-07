@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="theme-color" content="#424242">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet"
           href="{% static '/redqueen/css/bootstrap-material-design/bootstrap-material-design.min.css' %}">
@@ -15,7 +16,7 @@
 </head>
 <body>
 <div id="particles-js"></div>
-{# Drawer Header #}
+{# Header #}
 {% include  'cloudsen_blog/common-templates/header.html' %}
 
 {# Main Content #}
@@ -42,7 +43,7 @@
 <script src="{% static 'redqueen/js/popper.js' %}"></script>
 <script src="{% static 'redqueen/js/bootstrap-material-design/bootstrap-material-design.min.js' %}"></script>
 <script src="{% static 'redqueen/js/particles/particles.min.js' %}"></script>
-<script src="{% static 'cloudsen_blog/js/base.js' %}"></script>
 {% block extension_of_script %}{% endblock %}
+<script src="{% static 'cloudsen_blog/js/base.js' %}"></script>
 </body>
 </html>
