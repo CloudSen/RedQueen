@@ -40,7 +40,7 @@ class Article(models.Model):
     tag = models.ForeignKey(Tag, db_constraint=False, on_delete=models.DO_NOTHING)
     card_type = models.ForeignKey(CardType, db_constraint=False, on_delete=models.DO_NOTHING)
     preview_pic_url = models.CharField(max_length=500, null=True, blank=True)
-    text_color = models.CharField(max_length=30, choices=COLOR_THEME, default='gray')
+    text_color = models.CharField(max_length=30, choices=COLOR_THEME, default='gray color')
     content = MarkdownxField()
     summary = MarkdownxField(blank=True, null=True)
     create_time = models.DateTimeField(auto_now_add=True)
