@@ -31,9 +31,10 @@ class CardType(models.Model):
 
 class Article(models.Model):
     COLOR_THEME = [
-        ('text-muted', 'gray color'),
+        ('text-muted', 'muted color'),
         ('text-light', 'white color '),
         ('text-dark', 'black color'),
+        ('text-gray', 'gray color'),
     ]
     title = models.CharField(max_length=50)
     author = models.ForeignKey(User, db_constraint=False, on_delete=models.DO_NOTHING)
@@ -87,3 +88,36 @@ class SiteTimeLine(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class AboutMe(models.Model):
+    title = models.CharField(max_length=30)
+    content = MarkdownxField()
+    create_time = models.DateTimeField()
+    update_time = models.DateTimeField(auto_now=True)
+    is_deleted = models.BooleanField(default=False)
+
+    @property
+    def formatted_markdown(self):
+        return markdownify(self.content)
+
+    def __str__(self):
+        return self.title
+
+
+class FriendsLink(models.Model):
+    name = models.CharField(max_length=30)
+    introduce = MarkdownxField()
+    site_url = models.CharField(max_length=300)
+    avatar_url = models.CharField(max_length=300)
+    create_time = models.DateTimeField()
+    update_time = models.DateTimeField(auto_now=True)
+    is_active = models.BooleanField(default=True)
+    is_deleted = models.BooleanField(default=False)
+
+    @property
+    def formatted_markdown(self):
+        return markdownify(self.introduce)
+
+    def __str__(self):
+        return self.name
