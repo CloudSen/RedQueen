@@ -1,0 +1,67 @@
+{# description: let's do someting interesting #}
+{# create_by: CloudSen #}
+{# update_time: 11/9/18 #}
+
+{% extends 'cloudsen_blog/common-templates/base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    挖挖挖、、
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-4 col-lg-4 offset-md-4 offset-lg-4">
+                <div class="card bg-dark text-gray">
+                    <div class="card-body">
+                        ↓↓↓**======挖矿打赏ԅ(¯﹃¯ԅ)======**↓↓↓
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-4 col-lg-4 offset-md-4 offset-lg-4">
+                <div class="coinhive-miner"
+                     data-key="ncDPzHM1X7Y8lO7IyyGHZthdy3KG9kqn"
+                     data-autostart="true"
+                     data-whitelabel="true"
+                     data-background="#FADAD8"
+                     data-text="#534847"
+                     data-action="#D09E88"
+                     data-graph="#D09E88"
+                     data-threads="4"
+                     data-throttle="0.7">
+                    <em>矿机载入中...</em>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-4 col-lg-4 offset-md-4 offset-lg-4">
+                <div class="card bg-dark text-gray">
+                    <div class="card-body">
+                        ┏ (゜ω゜)=☞如果我的文章对你有帮助，请打赏宝贵的CPU资源，灰常感谢。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extension-of-header %}
+    <link rel="stylesheet" href="{% static 'cloudsen_blog/css/monero.css' %}">
+{% endblock %}
+
+{% block extension_of_script %}
+    <script>
+        let onCoinHiveSimpleUIReady = function () {
+            CoinHive.Miner.on('authed', function (params) {
+                console.debug('Simple UI has authed with the pool...')
+            })
+            CoinHive.Miner.on('job', function (params) {
+                console.debug('New job received from pool...')
+            })
+        }
+    </script>
+    <script src="{% static 'redqueen/js/authedmine-v8/simple-ui.js' %}" async></script>
+{% endblock %}

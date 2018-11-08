@@ -1,0 +1,10 @@
+html, body {
+    background: #534847;
+}
+
+.coinhive-miner {
+    width: 100%;
+    height: 300px;
+    border: none;
+}
+
