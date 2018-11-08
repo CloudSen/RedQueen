@@ -72,3 +72,18 @@ class MyIdea(models.Model):
 
     def __str__(self):
         return self.content
+
+
+class SiteTimeLine(models.Model):
+    title = models.CharField(max_length=30)
+    content = MarkdownxField()
+    create_time = models.DateTimeField()
+    update_time = models.DateTimeField(auto_now=True)
+    is_deleted = models.BooleanField(default=False)
+
+    @property
+    def formatted_markdown(self):
+        return markdownify(self.content)
+
+    def __str__(self):
+        return self.title

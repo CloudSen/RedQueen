@@ -51,6 +51,12 @@ def go_same_tag_articles_page(request: HttpRequest, tag_pk: int):
     return render(request, 'cloudsen_blog/blog/same-tag-articles.html', context)
 
 
+def go_site_timeline_page(request: HttpRequest):
+    timelines = list_all_site_timeline()
+    context = {'timelines': timelines}
+    return render(request, 'cloudsen_blog/timeline/site_timeline.html', context)
+
+
 def list_all_articles():
     """get a list of all my articles"""
     return models.Article.objects.all()
@@ -85,6 +91,10 @@ def list_all_tags():
 
 def list_all_my_idea():
     return models.MyIdea.objects.all()
+
+
+def list_all_site_timeline():
+    return models.SiteTimeLine.objects.all().order_by('create_time')
 
 
 def paginate_data(source_data, per_page: int, page_number: int):

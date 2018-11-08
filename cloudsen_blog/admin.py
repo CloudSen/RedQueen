@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.db import models
-from .models import Article, Tag, MyIdea, CardType
+from .models import Article, Tag, MyIdea, CardType, SiteTimeLine
 from django.urls import reverse
 from django.utils.html import format_html
 from markdownx.widgets import AdminMarkdownxWidget
@@ -92,3 +92,23 @@ class CardTypeAdmin(admin.ModelAdmin):
         'name',
         'description',
     ]
+
+
+@admin.register(SiteTimeLine)
+class SiteTimeLineAdmin(admin.ModelAdmin):
+    list_display = [
+        'id',
+        'title',
+        'create_time',
+        'update_time',
+        'is_deleted',
+    ]
+    list_display_links = [
+        'id',
+        'title',
+    ]
+    formfield_overrides = {
+        models.TextField: {
+            'widget': AdminMarkdownxWidget,
+        }
+    }
