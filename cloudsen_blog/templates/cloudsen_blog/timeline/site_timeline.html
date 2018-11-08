@@ -1,0 +1,109 @@
+{# description: Display timeline during development #}
+{# create_by: CloudSen #}
+{# update_time: 11/8/18 #}
+
+{% extends 'cloudsen_blog/common-templates/base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    Site Timline
+{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid blue-bg">
+        <div class="container">
+            <h2 class="pb-3 pt-2">Web Site Timeline</h2>
+            {% for timeline in timelines %}
+                {# 奇数在左边，偶数在右边 #}
+                {% if forloop.counter|divisibleby:2 %}
+                    <div class="row align-items-center justify-content-end how-it-works">
+                        <div class="col-6 text-right">
+                            <h5>
+                                <i class="material-icons icon-normal">&#xE192;</i>
+                                {{ timeline.create_time| date:'Y-m-d' }}
+                                {{ timeline.title }}
+                            </h5>
+                            <p>{{ timeline.formatted_markdown|safe }}</p>
+                        </div>
+                        {% if forloop.counter != timelines.count %}
+                            {# 中间元素有上下连线 full #}
+                            <div class="col-2 text-center full">
+                                <div class="circle">{{ forloop.counter }}</div>
+                            </div>
+                        {% elif forloop.counter == timelines.count %}
+                            {# 最后一个元素为 top #}
+                            <div class="col-2 text-center top-right">
+                                <div class="circle">{{ forloop.counter }}</div>
+                            </div>
+                        {% endif %}
+                    </div>
+                    {# 最后一个元素不输出连线 #}
+                    {% if forloop.counter != timelines.count %}
+                        {# path between even-odd #}
+                        <div class="row timeline">
+                            <div class="col-2">
+                                <div class="corner right-bottom"></div>
+                            </div>
+                            <div class="col-8">
+                                <hr/>
+                            </div>
+                            <div class="col-2">
+                                <div class="corner top-left"></div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% else %}
+                    <div class="row align-items-center how-it-works">
+                        {% if forloop.first %}
+                            {# 第一个元素为bottom #}
+                            <div class="col-2 text-center bottom">
+                                <div class="circle">{{ forloop.counter }}</div>
+                            </div>
+                        {% elif forloop.counter != timelines.count %}
+                            {# 中间元素有上下连线 full #}
+                            <div class="col-2 text-center full-left">
+                                <div class="circle">{{ forloop.counter }}</div>
+                            </div>
+                        {% elif forloop.counter == timelines.count %}
+                            {# 最后一个元素为 top #}
+                            <div class="col-2 text-center top">
+                                <div class="circle">{{ forloop.counter }}</div>
+                            </div>
+                        {% endif %}
+                        <div class="col-6">
+                            <h5>
+                                <i class="material-icons icon-normal">&#xE192;</i>
+                                {{ timeline.create_time| date:'Y-m-d' }}
+                                {{ timeline.title }}
+                            </h5>
+                            <p>{{ timeline.formatted_markdown|safe }}</p>
+                        </div>
+                    </div>
+                    {% if forloop.counter != timelines.count %}
+                        {# path between odd-even #}
+                        <div class="row timeline">
+                            <div class="col-2">
+                                <div class="corner top-right"></div>
+                            </div>
+                            <div class="col-8">
+                                <hr/>
+                            </div>
+                            <div class="col-2">
+                                <div class="corner left-bottom"></div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block extension-of-header %}
+    <link rel="stylesheet" href="{% static 'cloudsen_blog/css/site_timeline.css' %}"/>
+{% endblock %}
+
+{% block extension_of_script %}
+
+{% endblock %}
