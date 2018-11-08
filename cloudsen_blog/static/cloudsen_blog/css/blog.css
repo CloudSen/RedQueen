@@ -34,7 +34,27 @@ body {
     width: 100%;
 }
 
+/* a tag nest img tag */
 a.a-img {
     display: block;
     font-size: 0;
 }
+
+/* friends card start */
+.friends-card {
+    width: 100%;
+    height: 62px;
+}
+
+.friends-card-avatar {
+    float: left;
+    width: 25%;
+    height: 100%;
+}
+
+.friends-card-introduce {
+    float: left;
+    width: 75%;
+    height: 100%;
+}
+/* friends card end */
