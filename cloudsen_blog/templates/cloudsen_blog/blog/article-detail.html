@@ -18,7 +18,7 @@
                 <div class="card bg-dark " style="height: 56px;">
                     <div class="card-body">
                         <p class="card-title">
-                            <a class="text-light" href="javascript:history.back(-1)"><i
+                            <a class="text-gray" href="javascript:history.back(-1)"><i
                                     class="material-icons icon-size-small">&#xE408;</i>返回</a>
                         </p>
                     </div>
@@ -29,7 +29,7 @@
         <div class="row mb-3">
             <div class="col-sm-12 col-md-12 col-lg-12">
                 <article class="card text-left bg-light" role="article">
-                    <div class="card-header bg-dark text-light text-center">
+                    <div class="card-header bg-dark text-gray text-center">
                         {{ article.title }}
                     </div>
                     {% if article.preview_pic_url %}
@@ -51,11 +51,11 @@
         <div class="row">
             {# previous article #}
             <div class="col-sm-6 col-md-6 col-lg-6">
-                <div class="card bg-dark text-light">
+                <div class="card bg-dark text-gray">
                     <div class="card-body text-left">
                         <i class="material-icons icon-normal">&#xE314;</i>
                         {% if previous_article %}
-                            <a class="a-light" href="{% url 'go_article_detail' previous_article.pk %}">{{ previous_article.title }}</a>
+                            <a class="a-gray" href="{% url 'go_article_detail' previous_article.pk %}">{{ previous_article.title }}</a>
                         {% else %}
                             no more...
                         {% endif %}
@@ -64,10 +64,10 @@
             </div>
             {# next article #}
             <div class="col-sm-6 col-md-6 col-lg-6">
-                <div class="card bg-dark text-light">
+                <div class="card bg-dark text-gray">
                     <div class="card-body text-right">
                         {% if next_article %}
-                            <a class="a-light" href="{% url 'go_article_detail' next_article.pk %}">{{ next_article.title }}</a>
+                            <a class="a-gray" href="{% url 'go_article_detail' next_article.pk %}">{{ next_article.title }}</a>
                         {% else %}
                             no more...
                         {% endif %}
