@@ -1,0 +1,33 @@
+{# description: about me #}
+{# create_by: CloudSen #}
+{# update_time: 11/8/18 #}
+
+{% extends 'cloudsen_blog/common-templates/base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    CloudSen
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-3">
+            <div class="card bg-dark" style="max-height: 800px;">
+                <img class="card-img-top" src="{% static 'cloudsen_blog/imgs/daft-punk.gif' %}" alt="datf punk">
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-3">
+            <div class="markdown-body p-5" style="color: #aaa">
+                {{ about_me.formatted_markdown|safe }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extension-of-header %}
+    <link rel="stylesheet" href="{% static 'cloudsen_blog/css/about-me.css' %}">
+{% endblock %}
+
+{% block extension_of_script %}
+
+{% endblock %}
