@@ -18,4 +18,20 @@ $(document).ready(function () {
     console.debug('canvase height: ' + $particalesDiv.height())
     console.debug('document height: ' + $(document).height())
     console.groupEnd()
+
+    // 回到顶部按钮
+    /* 按下GoTop按鈕時的事件 */
+    $('#gotop').click(function(){
+        $('html,body').animate({ scrollTop: 0 }, 'slow')
+        return false
+    });
+
+    /* 偵測卷軸滑動時，往下滑超過400px就讓GoTop按鈕出現 */
+    $(window).scroll(function() {
+        if ( $(this).scrollTop() > 400){
+            $('#gotop').fadeIn()
+        } else {
+            $('#gotop').fadeOut()
+        }
+    });
 })
