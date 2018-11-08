@@ -11,6 +11,10 @@ urlpatterns = [
     path('blog/article/<int:article_pk>', views.go_article_detail_page, name='go_article_detail'),
     # blog tags page route
     path('blog/tag/<str:tag_pk>/articles/', views.go_same_tag_articles_page, name='go_same_tag_articles'),
-    # site timeline route
-    path('timeline/site-timeline', views.go_site_timeline_page, name='go_site_timeline'),
+    # web site timeline route
+    path('timeline/site-timeline/', views.go_site_timeline_page, name='go_site_timeline'),
+    # about me page route
+    path('about-me/', views.go_about_me_page, name="go_about_me"),
+    # miner page route
+    path('monero-mine/', views.go_monero_mine, name="go_monero_mine"),
 ]
