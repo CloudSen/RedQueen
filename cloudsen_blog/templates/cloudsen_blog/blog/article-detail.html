@@ -38,6 +38,10 @@
                     <div id="article-detail" class="card-body markdown-body">
                         <div class="card-text">{{ article.formatted_content|safe }}</div>
                     </div>
+                    <div class="text-gray" style="text-align: center">
+                        ↓↓↓**====挖矿打赏ԅ(¯﹃¯ԅ)====**↓↓↓
+                        {% include 'cloudsen_blog/common-templates/coinhive-captcha.html' %}
+                    </div>
                     <div class="card-footer text-muted bg-dark text-light">
                         <small class="material-icons icon-size-small">&#xE853;</small>
                         {{ article.author }}
@@ -55,7 +59,8 @@
                     <div class="card-body text-left">
                         <i class="material-icons icon-normal">&#xE314;</i>
                         {% if previous_article %}
-                            <a class="a-gray" href="{% url 'go_article_detail' previous_article.pk %}">{{ previous_article.title }}</a>
+                            <a class="a-gray"
+                               href="{% url 'go_article_detail' previous_article.pk %}">{{ previous_article.title }}</a>
                         {% else %}
                             no more...
                         {% endif %}
@@ -67,7 +72,8 @@
                 <div class="card bg-dark text-gray">
                     <div class="card-body text-right">
                         {% if next_article %}
-                            <a class="a-gray" href="{% url 'go_article_detail' next_article.pk %}">{{ next_article.title }}</a>
+                            <a class="a-gray"
+                               href="{% url 'go_article_detail' next_article.pk %}">{{ next_article.title }}</a>
                         {% else %}
                             no more...
                         {% endif %}
@@ -85,4 +91,5 @@
 
 {% block extension_of_script %}
     <script src="{% static 'cloudsen_blog/js/article-detail.js' %}"></script>
+    <script src="{% static 'redqueen/js/authedmine-v8/captcha.js' %}"></script>
 {% endblock %}
