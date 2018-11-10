@@ -57,7 +57,7 @@
         $.ajax({
             async: true,
             method: 'POST',
-            url: '{% url "captcha_mine_taken_varify" %}',
+            url: '{% url "captcha_mine_taken_verification" %}',
             dataType: 'json',
             data: {'coinhive_captcha_token': token},
             success: result => {
