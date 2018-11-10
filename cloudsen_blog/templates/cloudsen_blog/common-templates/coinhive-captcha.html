@@ -1,10 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{# description: common coinhive captcha component and data varify#}
+{# create_by: CloudSen #}
+{# update_time: 11/10/18 #}
+
+<div class="coinhive-captcha"
+     data-hashes="1024"
+     data-key="ncDPzHM1X7Y8lO7IyyGHZthdy3KG9kqn"
+     data-whitelabel="true"
+     data-disable-elements="input[type=submit]"
+     data-callback="myCaptchaCallback">
+    <em>
+        验证加载中...<br>
+        如果加载失败，请关闭Adblock!
+    </em>
+</div>
+<p id="captcha-message"></p>
