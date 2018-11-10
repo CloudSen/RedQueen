@@ -14,7 +14,10 @@ urlpatterns = [
     # web site timeline route
     path('timeline/site-timeline/', views.go_site_timeline_page, name='go_site_timeline'),
     # about me page route
-    path('about-me/', views.go_about_me_page, name="go_about_me"),
+    path('about-me/', views.go_about_me_page, name='go_about_me'),
     # miner page route
-    path('monero-mine/', views.go_monero_mine, name="go_monero_mine"),
+    path('monero-mine/', views.go_monero_mine, name='go_monero_mine'),
+    # miner taken verification
+    path('captcha-mine/taken-verification', views.captcha_mine_taken_verification,
+         name='captcha_mine_taken_verification')
 ]

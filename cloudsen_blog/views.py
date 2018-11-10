@@ -1,8 +1,10 @@
 from django.shortcuts import render, get_object_or_404, get_list_or_404
-from django.http import HttpRequest
+from django.http import HttpRequest, JsonResponse
 from django.core.paginator import Paginator
 from django.utils import timezone
 import cloudsen_blog.models as models
+import requests
+import json
 
 
 def go_home_page(request: HttpRequest):
@@ -68,6 +70,26 @@ def go_about_me_page(request: HttpRequest):
 def go_monero_mine(request: HttpRequest):
     context = {}
     return render(request, 'cloudsen_blog/monero/monero.html', context)
+
+
+def captcha_mine_taken_verification(request: HttpRequest):
+    if request.method != 'POST' or (not request.is_ajax()):
+        return JsonResponse({'success': False, 'reason': 'only accept POST request!'})
+    coinhive_captcha_token = request.POST.get('coinhive_captcha_token', '')
+    if coinhive_captcha_token == '':
+        return JsonResponse({'success': False, 'reason': 'token is Null!'})
+    # verify data
+    post_data = {
+        'hashes': 1024,
+        'secret': 'nU2MrEDfCseN7cmvAS2pbasA3363engr',
+        'token': coinhive_captcha_token,
+    }
+    response = requests.post('https://api.coinhive.com/token/verify', data=post_data)
+    content = json.loads(response.content)
+    if content['success']:
+        return JsonResponse({'success': True, 'data': content})
+    else:
+        return JsonResponse({'success': False, 'reason': '前后端数据不匹配T.T'})
 
 
 def list_all_articles():
