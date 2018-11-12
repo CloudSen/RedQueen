@@ -37,7 +37,7 @@
                     {% include 'cloudsen_blog/common-templates/paginator.html' %}
                 </div>
             </article>
-            {#  left side bar  #}
+            {#  right side bar  #}
             <aside class="col-lg-4 col-md-12 col-sm-12">
                 <div class="container-fluid mb-3">
                     {#  Article Tags Card  #}
@@ -137,5 +137,6 @@
 {% endblock %}
 
 {% block extension_of_script %}
+    <script src="{% static 'redqueen/js/lazyload-8.17.0/lazyload.min.js' %}"></script>
     <script src="{% static 'cloudsen_blog/js/blog.js' %}"></script>
 {% endblock %}
