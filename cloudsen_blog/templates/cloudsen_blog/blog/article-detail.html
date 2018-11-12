@@ -33,7 +33,9 @@
                         {{ article.title }}
                     </div>
                     {% if article.preview_pic_url %}
-                        <img class="card-img-top" src="{{ article.preview_pic_url }}" alt="preview pic">
+                        <img class="lazy card-img-top" alt="Preview image"
+                             data-src="{{ article.preview_pic_url }}"
+                             src="{% static 'cloudsen_blog/imgs/umbrella-loading.gif' %}">
                     {% endif %}
                     <div id="article-detail" class="card-body markdown-body">
                         <div class="card-text">{{ article.formatted_content|safe }}</div>
