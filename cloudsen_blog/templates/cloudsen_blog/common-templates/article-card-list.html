@@ -3,8 +3,8 @@
 {# create_by: CloudSen #}
 {# update_time: 10/27/18 #}
 
-{% load staticfiles %}
 
+{% load staticfiles %}
 <div class="row">
     <div class="col-sm-12">
         <div class="card-columns">
@@ -28,8 +28,14 @@
                                 <small>
                                     <i class="material-icons icon-size-small">&#xE192;</i>
                                     {{ article.update_time|date:'Y-m-d' }}
+                                    <i class="material-icons icon-size-small">&#xE24C;</i>
+                                    <small>
+                                        <a href="{{ request.build_absolute_uri }}article/{{ article.id }}#disqus_thread">
+                                        </a>
+                                    </small>
                                     <i class="material-icons icon-size-small">&#xE54E;</i>
-                                    <a href="#" class="badge badge-info">{{ article.tag.name }}</a>
+                                    <a href="{% url 'go_same_tag_articles' article.tag.id %}"
+                                       class="badge badge-info">{{ article.tag.name }}</a>
                                 </small>
                             </p>
                         </div>
@@ -59,8 +65,14 @@
                                 <small class="text-muted">
                                     <i class="material-icons icon-size-small">&#xE192;</i>
                                     {{ article.update_time|date:'Y-m-d' }}
+                                    <i class="material-icons icon-size-small">&#xE24C;</i>
+                                    <small>
+                                        <a href="{{ request.build_absolute_uri }}article/{{ article.id }}#disqus_thread">
+                                        </a>
+                                    </small>
                                     <i class="material-icons icon-size-small">&#xE54E;</i>
-                                    <a href="#" class="badge badge-info">{{ article.tag.name }}</a>
+                                    <a href="{% url 'go_same_tag_articles' article.tag.id %}"
+                                       class="badge badge-info">{{ article.tag.name }}</a>
                                 </small>
                             </p>
                         </div>
@@ -78,8 +90,14 @@
                             <p class="card-text text-muted">
                                 <i class="material-icons icon-size-small">&#xE192;</i>
                                 <small>{{ article.update_time|date:'Y-m-d' }}</small>
+                                <i class="material-icons icon-size-small">&#xE24C;</i>
+                                <small>
+                                    <a href="{{ request.build_absolute_uri }}article/{{ article.id }}#disqus_thread">
+                                    </a>
+                                </small>
                                 <i class="material-icons icon-size-small">&#xE54E;</i>
-                                <small><a href="#" class="badge badge-info">{{ article.tag.name }}</a></small>
+                                <small><a href="{% url 'go_same_tag_articles' article.tag.id %}"
+                                          class="badge badge-info">{{ article.tag.name }}</a></small>
                             </p>
                         </div>
                     {% endif %}
