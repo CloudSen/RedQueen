@@ -35,4 +35,8 @@ $(function () {
         console.debug('ClipboardEvent!\n')
         setClipboardText(e)
     })
+
+    let myLazyLoad = new LazyLoad({
+        elements_selector: ".lazy"
+    })
 })

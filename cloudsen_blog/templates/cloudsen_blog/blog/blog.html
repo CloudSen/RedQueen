@@ -19,14 +19,19 @@
                     {# Title #}
                     <div class="row mb-3">
                         <div class="col-sm-12">
-                            <div class="card bg-dark text-gray" style="height: 56px;">
-                                <div class="card-body">
-                                    <p class="card-title">
-                                        <i class="material-icons icon-size-small">&#xE865;</i>
-                                        最近文章({{ page.paginator.count }})
-                                    </p>
-                                </div>
-                            </div>
+                            {#                            <div class="card bg-dark text-gray" style="height: 56px;">#}
+                            {#                                <div class="card-body">#}
+                            {#                                    <p class="card-title">#}
+                            {#                                        <i class="material-icons icon-size-small">&#xE865;</i>#}
+                            {#                                        最近文章({{ page.paginator.count }})#}
+                            {#                                    </p>#}
+                            {#                                </div>#}
+                            {#                            </div>#}
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item active" aria-current="page">最近文章({{ page.paginator.count }})</li>
+                                </ol>
+                            </nav>
                         </div>
                     </div>
                     {# Pagination Bar #}

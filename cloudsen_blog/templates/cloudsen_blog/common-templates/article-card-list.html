@@ -14,7 +14,8 @@
                         {# image overlays card #}
                         <img class="lazy card-img card-img-full-width" alt="image background"
                              data-src="{{ article.preview_pic_url }}"
-                             src="{% static 'cloudsen_blog/imgs/umbrella-loading.gif' %}">
+                             src="{% static 'cloudsen_blog/imgs/umbrella-loading.gif' %}"
+                             onerror="this.src={% static 'cloudsen_blog/imgs/umbrella-loading.gif' %}">
                         <div class="card-img-overlay {{ article.text_color }}">
                             <h5 class="card-title">
                                 <a href="{% url 'go_article_detail' article.pk %}"
@@ -37,15 +38,14 @@
                         <a class="a-img" href="{% url 'go_article_detail' article.pk %}">
                             <img class="lazy card-img card-img-full-width" alt="image"
                                  data-src="{{ article.preview_pic_url }}"
-                                 src="{% static 'cloudsen_blog/imgs/umbrella-loading.gif' %}">
+                                 src="{% static 'cloudsen_blog/imgs/umbrella-loading.gif' %}"
+                                 onerror="this.src={% static 'cloudsen_blog/imgs/umbrella-loading.gif' %}">
                         </a>
                     {% elif article.card_type.pk == 3 %}
-                        {# image caps card #}
-                        {#                        <img class="card-img-top card-img-full-width" src="{{ article.preview_pic_url }}"#}
-                        {#                             alt="Preview image">#}
                         <img class="lazy card-img-top card-img-full-width" alt="Preview image"
                              data-src="{{ article.preview_pic_url }}"
-                             src="{% static 'cloudsen_blog/imgs/umbrella-loading.gif' %}">
+                             src="{% static 'cloudsen_blog/imgs/umbrella-loading.gif' %}"
+                             onerror="this.src={% static 'cloudsen_blog/imgs/umbrella-loading.gif' %}">
                         <div class="card-body">
                             <h5 class="card-title">
                                 <a href="{% url 'go_article_detail' article.pk %}" class="text-light">
