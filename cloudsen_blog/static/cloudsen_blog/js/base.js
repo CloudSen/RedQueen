@@ -8,16 +8,42 @@ $(() => {
     })
 
     // 计算canvas的高度，占满整个页面
-    let $particalesDiv = $('#particles-js')
-    console.group('before caculate height:\n')
-    console.debug('canvase height: ' + $particalesDiv.height())
-    console.debug('document height: ' + $(document).height())
-    console.groupEnd()
-    $particalesDiv.height($(document).height())
-    console.group('after caculate height:\n')
-    console.debug('canvase height: ' + $particalesDiv.height())
-    console.debug('document height: ' + $(document).height())
-    console.groupEnd()
+    function doHeightCalulate(lastHeight, newHeight) {
+        console.group('document height changed...')
+        console.debug('document last height: ' + lastHeight)
+        console.debug('document new height: ' + newHeight)
+        let $particalesDiv = $('#particles-js')
+        console.group('before caculate height:\n')
+        console.debug('canvase height: ' + $particalesDiv.height())
+        console.debug('document height: ' + $(document).height())
+        console.groupEnd()
+        // $(document).height() - 4
+        $particalesDiv.height($('.footer').offset().top)
+        console.group('after caculate height:\n')
+        console.debug('canvase height: ' + $particalesDiv.height())
+        console.debug('document height: ' + $(document).height())
+        console.groupEnd()
+        console.groupEnd()
+    }
+
+    function onElementHeightChange(elm, callback) {
+        let lastHeight = $(elm).height(), newHeight = 0
+        // 一来先计算一次
+        if (callback) {
+            callback(lastHeight, newHeight)
+        }
+        (function run() {
+            newHeight = $(elm).height()
+            if (lastHeight !== newHeight)
+                callback(lastHeight, newHeight)
+            lastHeight = newHeight
+            if (elm.onElementHeightChangeTimer)
+                clearTimeout(elm.onElementHeightChangeTimer)
+            elm.onElementHeightChangeTimer = setTimeout(run, 200)
+        })()
+    }
+
+    onElementHeightChange(document, doHeightCalulate)
 
     /* 按下GoTop按鈕時的事件 */
     $('#gotop').click(() => {
