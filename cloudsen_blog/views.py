@@ -100,6 +100,7 @@ def list_all_articles():
 def paginate_latest_2_month_articles(page_number: int = 1):
     """
     paginate the articles published within two month
+    and add absolute url to every article object
 
     :param page_number: expect page number
     :return: page and range
@@ -107,6 +108,8 @@ def paginate_latest_2_month_articles(page_number: int = 1):
     latest_2_month_date = timezone.now() - timezone.timedelta(days=60)
     latest_articles = models.Article.objects.filter(update_time__gte=latest_2_month_date, is_deleted=False) \
         .order_by('-update_time')
+    for article in latest_articles:
+        article.absolute_url = '/cloudsen_blog/blog/article/' + str(article.id)
     return paginate_data(latest_articles, 10, page_number)
 
 
@@ -118,6 +121,8 @@ def get_article_detail(article_pk: int):
 def paginate_same_tag_articles(tag_pk: int, page_number: int = 1):
     """return a list of articles with same tag"""
     articles = get_list_or_404(models.Article, tag_id=tag_pk, is_deleted=False)
+    for article in articles:
+        article.absolute_url = '/cloudsen_blog/blog/article/' + str(article.id)
     return paginate_data(articles, 10, page_number)
 
 
