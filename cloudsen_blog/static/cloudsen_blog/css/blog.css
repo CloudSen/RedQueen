@@ -57,4 +57,10 @@ a.a-img {
     width: 75%;
     height: 100%;
 }
+
+.over-hidden {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 /* friends card end */
