@@ -16,23 +16,73 @@
             {#  Rescently published articles card  #}
             <article class="col-lg-12 col-md-12 col-sm-12">
                 <div class="container">
-                    {# Title #}
-                    <div class="row mb-3">
-                        <div class="col-sm-12">
-                            <div class="card bg-dark text-light" style="height: 56px;">
-                                <div class="card-body">
-                                    <p class="card-title">
-                                        <i class="material-icons icon-size-small">&#xE865;</i>
-                                        {{ tag.name }}相关文章({{ page.paginator.count }})
-                                    </p>
-                                </div>
+                    {# navigation bar #}
+                    <div class="row mb-3 mt-3">
+                        <div class="col-sm-12 col-md-12 col-lg-12 d-none d-sm-block d-md-block d-lg-block">
+                            <div class="card bg-dark text-gray">
+                                <nav aria-label="breadcrumb" style="height: 56px;">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="{% url 'go_cloudsen_home' %}">
+                                            <small>主页</small>
+                                        </a></li>
+                                        <li class="breadcrumb-item"><a href="{% url 'go_blog_page' %}">
+                                            <small>博客</small>
+                                        </a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">
+                                            <small>
+                                                {{ tag.name }}相关文章(
+                                                {% if page == 0 %}
+                                                    0
+                                                {% else %}
+                                                    {{ page.paginator.count }}
+                                                {% endif %}
+                                                )
+                                            </small>
+                                        </li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="col-12 d-block d-sm-none d-md-none d-lg-none">
+                            <div class="card bg-dark text-gray over-hidden">
+                                <nav aria-label="breadcrumb" style="height: 56px;min-width: 340px">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="{% url 'go_cloudsen_home' %}">
+                                            <small>主页</small>
+                                        </a></li>
+                                        <li class="breadcrumb-item"><a href="{% url 'go_blog_page' %}">
+                                            <small>博客</small>
+                                        </a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">
+                                            <small>
+                                                相关文章(
+                                                {% if page == 0 %}
+                                                    0
+                                                {% else %}
+                                                    {{ page.paginator.count }}
+                                                {% endif %}
+                                                )
+                                            </small>
+                                        </li>
+                                    </ol>
+                                </nav>
                             </div>
                         </div>
                     </div>
                     {# Pagination Bar #}
                     {% include 'cloudsen_blog/common-templates/paginator.html' %}
                     {# Display Articles #}
-                    {% include 'cloudsen_blog/common-templates/article-card-list.html' %}
+                    {% if page == 0 %}
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="text-gray text-center">
+                                    <h4>抱歉，暂无相关文章。</h4>
+                                </div>
+                            </div>
+                        </div>
+                    {% else %}
+                        {% include 'cloudsen_blog/common-templates/article-card-list.html' %}
+                    {% endif %}
                     {# Pagination Bar #}
                     {% include 'cloudsen_blog/common-templates/paginator.html' %}
                 </div>

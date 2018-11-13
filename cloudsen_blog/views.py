@@ -120,10 +120,13 @@ def get_article_detail(article_pk: int):
 
 def paginate_same_tag_articles(tag_pk: int, page_number: int = 1):
     """return a list of articles with same tag"""
-    articles = get_list_or_404(models.Article, tag_id=tag_pk, is_deleted=False)
-    for article in articles:
-        article.absolute_url = '/cloudsen_blog/blog/article/' + str(article.id)
-    return paginate_data(articles, 10, page_number)
+    articles = models.Article.objects.filter(tag_id=tag_pk, is_deleted=False)
+    if articles:
+        for article in articles:
+            article.absolute_url = '/cloudsen_blog/blog/article/' + str(article.id)
+        return paginate_data(articles, 10, page_number)
+    else:
+        return 0, 0
 
 
 def list_all_tags():
