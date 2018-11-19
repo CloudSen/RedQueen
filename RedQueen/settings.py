@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cloudsen_blog',
     'markdownx',
+    'gunicorn',
 ]
 
 MIDDLEWARE = [
