@@ -19,5 +19,7 @@ _____ _____ _____ _____ _____ __    __    _____
 - ES6 Support
 - Particle Effects Background
 - Friendly To Mobile Devices
+- Images lazy load
 - Nginx
-- uWSGI
+- Gunicorn
+- Mysql
