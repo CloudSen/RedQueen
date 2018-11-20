@@ -93,3 +93,11 @@ footer {
 .breadcrumb {
     background: #424242;
 }
+
+.min-width-200 {
+    min-width: 200px;
+}
+
+.min-width-350 {
+    min-width: 350px;
+}

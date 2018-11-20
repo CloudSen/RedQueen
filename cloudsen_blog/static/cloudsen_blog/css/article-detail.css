@@ -8,6 +8,9 @@ body {
     text-decoration: none;
 }
 
+.coinhive-captcha {
+    overflow: auto;
+}
 /* 禁用默认菜单 */
 /** {*/
 /*-webkit-touch-callout: none; !*系统默认菜单被禁用*!*/
