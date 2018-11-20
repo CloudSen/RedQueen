@@ -86,6 +86,7 @@ $(() => {
         beforeSend: (xhr, settings) => {
             let $captchaMassage = $('#captcha-message')
             let csrftoken = getCookie('csrftoken')
+            console.debug('csrftoken: ' + csrftoken)
             if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
                 xhr.setRequestHeader("X-CSRFToken", csrftoken)
             }
