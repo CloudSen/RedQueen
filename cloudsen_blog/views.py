@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.http import HttpRequest, JsonResponse
+from django.views.decorators.csrf import ensure_csrf_cookie
 from django.core.paginator import Paginator
 from django.utils import timezone
 import cloudsen_blog.models as models
@@ -26,6 +27,7 @@ def go_blog_page(request: HttpRequest):
     return render(request, 'cloudsen_blog/blog/blog.html', context)
 
 
+@ensure_csrf_cookie
 def go_article_detail_page(request: HttpRequest, article_pk: int):
     """redirect to article's detail page"""
     article = get_article_detail(article_pk)
