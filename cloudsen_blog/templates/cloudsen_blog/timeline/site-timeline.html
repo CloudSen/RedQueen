@@ -29,12 +29,12 @@
                         {% if forloop.counter != timelines.count %}
                             {# 中间元素有上下连线 full #}
                             <div class="col-2 text-center full">
-                                <div class="circle">{{ forloop.counter }}</div>
+                                <div class="circle">*</div>
                             </div>
                         {% elif forloop.counter == timelines.count %}
                             {# 最后一个元素为 top #}
                             <div class="col-2 text-center top-right">
-                                <div class="circle">{{ forloop.counter }}</div>
+                                <div class="circle">*</div>
                             </div>
                         {% endif %}
                     </div>
@@ -58,17 +58,17 @@
                         {% if forloop.first %}
                             {# 第一个元素为bottom #}
                             <div class="col-2 text-center bottom">
-                                <div class="circle">{{ forloop.counter }}</div>
+                                <div class="circle">*</div>
                             </div>
                         {% elif forloop.counter != timelines.count %}
                             {# 中间元素有上下连线 full #}
                             <div class="col-2 text-center full-left">
-                                <div class="circle">{{ forloop.counter }}</div>
+                                <div class="circle">*</div>
                             </div>
                         {% elif forloop.counter == timelines.count %}
                             {# 最后一个元素为 top #}
                             <div class="col-2 text-center top">
-                                <div class="circle">{{ forloop.counter }}</div>
+                                <div class="circle">*</div>
                             </div>
                         {% endif %}
                         <div class="col-6">
