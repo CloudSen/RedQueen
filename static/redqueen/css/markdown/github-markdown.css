@@ -695,3 +695,18 @@
 .markdown-body hr {
     border-bottom-color: #eee;
 }
+
+/* 自定义显示代码行数的样式 */
+.codehilitetable {
+    background: #272822;
+}
+
+.linenos {
+    background: #272822;
+    border-right: 1px solid yellow !important;
+}
+
+td.code {
+    border: none !important;
+    background: #272822;
+}
