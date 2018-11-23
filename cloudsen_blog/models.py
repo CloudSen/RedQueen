@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 from markdownx.models import MarkdownxField
 from markdownx.utils import markdownify
 
@@ -55,6 +56,9 @@ class Article(models.Model):
     @property
     def formatted_summary(self):
         return markdownify(self.summary)
+
+    def get_absolute_url(self):
+        return reverse('go_article_detail', args=[self.id])
 
     def __str__(self):
         return self.title
