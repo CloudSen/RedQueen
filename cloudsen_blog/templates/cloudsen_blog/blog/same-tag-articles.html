@@ -44,8 +44,8 @@
                             </div>
                         </div>
                         <div class="col-12 d-block d-sm-none d-md-none d-lg-none">
-                            <div class="card bg-dark text-gray over-hidden">
-                                <nav aria-label="breadcrumb" style="height: 56px;min-width: 340px">
+                            <div class="card bg-dark text-gray">
+                                <nav aria-label="breadcrumb" style="height: 56px;">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="{% url 'go_cloudsen_home' %}">
                                             <small>主页</small>
@@ -97,4 +97,6 @@
 
 {% block extension_of_script %}
     <script id="dsq-count-scr" src="//cloudsen-blog.disqus.com/count.js" async></script>
+    <script src="{% static 'redqueen/js/lazyload-8.17.0/lazyload.min.js' %}"></script>
+    <script src="{% static 'cloudsen_blog/js/same-tag-articles.js' %}"></script>
 {% endblock %}

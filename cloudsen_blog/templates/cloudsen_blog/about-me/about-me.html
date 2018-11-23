@@ -14,7 +14,10 @@
         <div class="row">
             <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-3">
                 <div class="card bg-dark" style="max-height: 800px;">
-                    <img class="card-img-top" src="{% static 'cloudsen_blog/imgs/daft-punk.gif' %}" alt="datf punk">
+                    <img class="lazy card-img-top" alt="image datf punk"
+                             data-src="https://s1.ax1x.com/2018/11/24/FFQN1x.gif"
+                             src="{% static 'cloudsen_blog/imgs/umbrella-loading.gif' %}"
+                             onerror="this.src={% static 'cloudsen_blog/imgs/umbrella-loading.gif' %}">
                 </div>
             </div>
             <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-3">
@@ -32,5 +35,6 @@
 {% endblock %}
 
 {% block extension_of_script %}
-
+    <script src="{% static 'cloudsen_blog/js/about-me.js' %}"></script>
+    <script src="{% static 'redqueen/js/lazyload-8.17.0/lazyload.min.js' %}"></script>
 {% endblock %}
