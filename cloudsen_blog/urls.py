@@ -1,5 +1,6 @@
-from django.urls import path
-from . import views
+from django.urls import path, re_path
+from cloudsen_blog import views
+from cloudsen_blog.feeds import RssSiteNewsFeed, AtomSiteNewsFeed
 
 urlpatterns = [
     # home page route
@@ -19,5 +20,9 @@ urlpatterns = [
     path('monero-mine/', views.go_monero_mine, name='go_monero_mine'),
     # miner taken verification
     path('captcha-mine/taken-verification', views.captcha_mine_taken_verification,
-         name='captcha_mine_taken_verification')
+         name='captcha_mine_taken_verification'),
+    # RSS
+    re_path(r'^rss\.xml$', RssSiteNewsFeed(), name='rss'),
+    # Atom
+    re_path(r'^atom\.xml$', AtomSiteNewsFeed(), name='atom'),
 ]
