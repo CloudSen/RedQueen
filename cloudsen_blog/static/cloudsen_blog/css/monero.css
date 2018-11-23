@@ -8,3 +8,6 @@ html, body {
     border: none;
 }
 
+.img-full-width {
+    width: 100%;
+}
