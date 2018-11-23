@@ -47,7 +47,10 @@
         </div>
         <div class="row mb-3">
             <div class="col-sm-12 col-md-6 col-lg-4 offset-md-3 offset-lg-4">
-                <img src="https://steemitimages.com/DQmYVrh1J8XqBWoLSNxgXXEio34SvxnptRGSC9dms3PzKuc/dude%20mining.gif">
+                <img class="lazy img-full-width" alt="image minner"
+                             data-src="https://s1.ax1x.com/2018/11/24/FFQt91.gif"
+                             src="{% static 'cloudsen_blog/imgs/umbrella-loading.gif' %}"
+                             onerror="this.src={% static 'cloudsen_blog/imgs/umbrella-loading.gif' %}">
             </div>
         </div>
     </div>
@@ -58,5 +61,7 @@
 {% endblock %}
 
 {% block extension_of_script %}
+    <script src="{% static 'cloudsen_blog/js/monero.js' %}"></script>
     <script src="{% static 'redqueen/js/authedmine-v8/simple-ui.js' %}" async></script>
+    <script src="{% static 'redqueen/js/lazyload-8.17.0/lazyload.min.js' %}"></script>
 {% endblock %}
