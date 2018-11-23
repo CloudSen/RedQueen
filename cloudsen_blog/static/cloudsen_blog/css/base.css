@@ -98,6 +98,10 @@ footer {
     min-width: 200px;
 }
 
+.min-width-300 {
+    min-width: 300px;
+}
+
 .min-width-350 {
     min-width: 350px;
 }
