@@ -74,6 +74,11 @@ def go_monero_mine(request: HttpRequest):
     return render(request, 'cloudsen_blog/monero/monero.html', context)
 
 
+def go_friends_page(request: HttpRequest):
+    context = {}
+    return render(request, 'cloudsen_blog/friends/friends.html', context)
+
+
 def captcha_mine_taken_verification(request: HttpRequest):
     if request.method != 'POST' or (not request.is_ajax()):
         return JsonResponse({'success': False, 'reason': 'only accept POST request!'})

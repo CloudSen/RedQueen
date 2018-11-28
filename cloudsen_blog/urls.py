@@ -16,6 +16,8 @@ urlpatterns = [
     path('timeline/site-timeline/', views.go_site_timeline_page, name='go_site_timeline'),
     # about me page route
     path('about-me/', views.go_about_me_page, name='go_about_me'),
+    # friends route
+    path('friends/', views.go_friends_page, name='go_friends_page'),
     # miner page route
     path('monero-mine/', views.go_monero_mine, name='go_monero_mine'),
     # miner taken verification

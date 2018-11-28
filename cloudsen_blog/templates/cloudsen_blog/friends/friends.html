@@ -1,0 +1,52 @@
+{# description: friends link #}
+{# create_by: CloudSen #}
+{# update_time: 18-11-28 #}
+
+{% extends 'cloudsen_blog/common-templates/base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    友情链接
+{% endblock %}
+
+{% block body %}
+    <div class="container min-width-350">
+        <div class="row mt-3">
+            <div class="col-sm-12 col-md-8 col-lg-10 offset-md-2 offset-lg-1">
+                <div class="card bg-dark text-gray">
+                    <div class="card-body text-center">
+                        这些友情链接是来自<a href="http://storeweb.cn" target="_blank" class="site-friend-link-project">个站商店</a>的一个子项目
+                        <a href="http://storeweb.cn" target="_blank" class="site-friend-link-project">『小红帽友链』</a>，点<a
+                            href="" target="_blank" class="site-friend-link-homepage"> 这里 </a>访问我在个站商店上的主页
+                        <br>
+                        <div class="clear"></div>
+                        <div class="site-friend-link"></div>
+                        <script type="text/html" id="links-template" data-no-instant>
+                            <div>
+                                <a class="site-friend-link-count %%update_hide%%">
+                                    %%update_count%%
+                                </a>
+                                <img class="site-friend-link-image"
+                                     src="%%logo_cn%%"/>
+                                <a class="site-friend-link-name"
+                                   href="%%domain%%" target="_blank">
+                                    %%name%%
+                                </a>
+                                <span class="site-friend-link-into">%%intro_link%%</span>
+                            </div>
+                        </script>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extension-of-header %}
+    <link rel="stylesheet" href="{% static 'cloudsen_blog/css/friends.css' %}"/>
+{% endblock %}
+
+{% block extension_of_script %}
+    <script src="{% static 'cloudsen_blog/js/friends.js' %}"></script>
+{% endblock %}
