@@ -1,6 +1,6 @@
 certifi==2018.10.15
 chardet==3.0.4
-Django==2.1.2
+Django==2.2.10
 django-markdownx==2.0.24
 gevent==1.3.7
 greenlet==0.4.15
